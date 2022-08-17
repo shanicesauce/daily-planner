@@ -43,18 +43,18 @@ textarea{
 }
 
 .past {
-  background-color: #d3d3d3;
-  color: white;
+  background-color: #efe0ea;
+  color: black;
 }
 
 .present {
-  background-color: #ff6961;
-  color: white;
+  background-color: #ff4f4f;
+  color: black;
 }
 
 .future {
-  background-color: #77dd77;
-  color: white;
+  background-color: #89fc89;
+  color: black;
 }
 
 .saveBtn {
@@ -69,3 +69,4 @@ textarea{
   font-size: 20px;
   transition: all .3s ease-in-out;
 }
+
