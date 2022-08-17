@@ -7,8 +7,8 @@ var currentTime = parseInt(moment().format("H"))
 currentDay.text(moment().format("llll"));
 
 hours.each(function() {
-    var plannerTime = parseInt($(this).attr("id"));
-    var siblings = $(this).siblings();
+    var plannerTime = parseInt($(this).siblings("textarea").attr("id"));
+    var siblings = $(this).siblings("textarea");
    
     if (plannerTime < currentTime) {
         siblings.addClass("past");
@@ -32,7 +32,7 @@ hours.each(function() {
 $(".saveBtn").click(function() {
     // save
     var textArea = $(this).siblings("textarea").val();
-    var timeChosen = $(this).siblings("div").attr("id");
+    var timeChosen = $(this).siblings("textarea").attr("id");
     console.log(textArea);
     console.log(timeChosen);
     localStorage.setItem(timeChosen, textArea);
@@ -45,7 +45,7 @@ for (var i = 0 ; i< localStorage.length; i++){
     var key = localStorage.key(i);
     // console.log(key);
     // console.log(localStorage.getItem(key));
-    $(`.description #${key}`).val(localStorage.getItem(key));
+    $(` #${key}`).val(localStorage.getItem(key));
     
 }
 }
