@@ -1,7 +1,8 @@
 var hours = $(".hour");
 var description = $(".description")
 var currentDay = $("#currentDay")
-var currentTime = parseInt(moment().format("h"))
+var currentTime = parseInt(moment().format("H"))
+
 
 currentDay.text(moment().format("llll"));
 
@@ -30,24 +31,42 @@ hours.each(function() {
 
 $(".saveBtn").click(function() {
     // save
-    savePlans();
+    var textArea = $(this).siblings("textarea").val();
+    var timeChosen = $(this).siblings("div").attr("id");
+    console.log(textArea);
+    console.log(timeChosen);
+    localStorage.setItem(timeChosen, textArea);
+    // savePlans();
 });
 
-
-
-var savePlans = function() {
-    var time =  $(hours).attr("id");
-    var timeChosen = parseInt(time)
-    var plannedText = $(".description").val();
-
-    localStorage.setItem(timeChosen, plannedText);
-
-    console.log(timeChosen);
-
+var loadPlans = function() {
+//  localStorage.getItem();
+for (var i = 0 ; i< localStorage.length; i++){
+    var key = localStorage.key(i);
+    // console.log(key);
+    // console.log(localStorage.getItem(key));
+    $(`.description #${key}`).val(localStorage.getItem(key));
+    
+}
 }
 
-// var loadPlans = function() {
-//  localStorage.getItem();
-// }
+loadPlans();
+console.log( $(`#9 .description`));
+
+// var savePlans = function() {
+//     // var plannedText = $(".description").val();
+//     // var timeChosen =  parseInt($(hours).attr("id"));
+//    $(".description").each(function(){
+//     console.log($(this).val());
+//    })
+
+    // localStorage.setItem(timeChosen, plannedText);
+
+    
+    // console.log (plannedText)
+
+
+
+
 
 // console.log(loadPlans)
